@@ -1,10 +1,10 @@
+#!/usr/bin/env python3
 import os
 import re
 import flag
 
 ALL_WORDS_FILE = os.path.abspath("all_words.txt")
 FIVE_LETTER_WORDS_FILE = os.path.abspath("five_letter_words.txt")
-WORD_SIZE = 6  
 
 def define_flags():
     grey = flag.string("grey", "", "The letters that are grey-ed out.")
@@ -12,10 +12,10 @@ def define_flags():
     green = flag.string("green", "", "The letters that are highlighted in green, along with their position: 'A' in position 1 would be \"a1\".")
     return grey, yellow, green
 
-def load_all_words_for_length(filename):
+def load_all_words_for_length(filename, word_length=6):
     words = []
     with open(filename) as words_file:
-        [words.append(line.rstrip()) for line in words_file if len(line) == WORD_SIZE]
+        [words.append(line.rstrip()) for line in words_file if len(line) == word_length]
     return words
 
 def load_words(filename):
